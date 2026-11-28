@@ -103,14 +103,6 @@ a {
     line-height: 1.6;
 }
 
-.hero-photo {
-    width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-    filter: drop-shadow(0 0 3px var(--accent))
-            drop-shadow(0 0 24px rgba(255, 90, 31, 0.6));
-}
-
 .hero-role {
     font-family: 'Anton', sans-serif;
     font-size: clamp(2rem, 4vw, 4rem);
@@ -141,4 +133,19 @@ a {
     .hero-role {
         text-align: center;
     }
+}
+
+/* Glow lives on the wrapper so the fade on the image can't clip it */
+.hero-photo-wrap {
+    filter: drop-shadow(0 0 3px var(--accent)) drop-shadow(0 0 24px rgba(255, 90, 31, 0.6));
+}
+
+/* Fade the bottom edge of the photo into the black background */
+.hero-photo {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
 }
